@@ -70,8 +70,88 @@ int retornarPar(int *vet, int tamanho){
     }
     return numPares;
 }
+int trocaValores(int *a, int *b){
+    int i;
+    int j;
+    int atual;
+
+    atual = *a;
+    *a = *b;
+    *b = atual;
+    printf("Agora a variável a = %d", *a);
+    printf("Agora a variável b é = %d", *b);
+}
+void multiplicarVetores(int *vet1, int tamanho){
+    int i;
+    for(i = 0; i < tamanho; i++){
+        *(vet1 + i) *= 2;
+    }
+    for(i = 0; i < tamanho; i++){
+        printf("%d \n", *(vet1 + i));
+    }
+}
+int somaInteiros(int *a, int *b){
+    int resultado;
+    resultado = *a + *b;
+    return resultado;
+}
+int retornaMaiorEndereco(int *a, int *b){
+    if(*a > *b){
+        return a;
+    } else {
+        return b;
+    }
+}
+void preencheVetorConsecutivo(int *vet, int tamanho){
+    int i;
+    for(i = 0; i < tamanho; i++){
+        *(vet + i) = i + 1;
+    }
+}
 int main(){
+
     SetConsoleOutputCP(CP_UTF8);
+    // Desafio 12 – Preenchendo um vetor
+    // Crie uma função preencher que preencha um vetor com valores consecutivos (1, 2, 3...).
+    int i;
+    int vet[5];
+    int tamanho = 5;
+
+    preencheVetorConsecutivo(vet, tamanho);
+
+    for(i = 0; i < tamanho; i++){
+        printf("%d \n", vet[i]);
+    }
+
+    {
+        // 🔍 Desafio 11 – Encontrar o maior número
+        // Escreva uma função que receba dois ponteiros e retorne o endereço do maior valor.
+    // int a = 25;
+    // int b = 45;
+    // int *resultado = retornaMaiorEndereco(&a, &b);
+    // printf("O maior endereço do maior valor é: %d \n", *resultado);
+    }
+    {
+    // 🧮 Desafio 10 – Soma de dois números usando ponteiros
+    // Crie uma função que receba dois ponteiros para inteiros e retorne a soma deles.
+    // int a = 10;
+    // int b = 20;
+    // int resultado = somaInteiros(&a, &b);
+    // printf("A soma de %d + %d é de: %d \n",a, b, resultado);
+    }
+    {
+    // 📦 Desafio 9 – Função que altera um vetor
+    // Crie uma função que receba um vetor de inteiros e seu tamanho, e multiplique cada elemento por 2.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // multiplicarVetores(vet, tamanho);
+    }
+    {   
+    // Crie uma função void trocar(int *a, int *b) que troque os valores de duas variáveis usando ponteiros.
+    // int a = 20;
+    // int b = 10;
+    // trocaValores(&a, &b);
+    }
     {
     // 🧩 Exercício 7: Contar quantos pares há no vetor
     // Crie uma função que percorra um vetor e retorne quantos números pares ele possui.
