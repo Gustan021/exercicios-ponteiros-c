@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <windows.h>
+// #include <windows.h>
 
 void dobrarValor(int *num) {
     *num = *num * 2;
@@ -108,21 +108,186 @@ void preencheVetorConsecutivo(int *vet, int tamanho){
         *(vet + i) = i + 1;
     }
 }
-int main(){
+int somaValoresPonteiros(int *a, int *b){
+    int resultado = *a + *b;
+    return resultado;
+}
+void trocaValoresPonteiros(int *a, int *b){
+    int atual = *a;
+    *a = *b;
+    *b = atual;
+}
+int multiplicaPonteiros(int *a, int *b){
+    return *a * *b;
+}
+int verificaPonteiro(int *pont){
+    if(*pont % 2 == 0){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+int somaVetoresPonteiro(int *vet, int tamanho){
+    int i;
+    int somaPonteiro = 0;
+    for(i = 0; i < tamanho; i++){
+        somaPonteiro += *(vet + i);
+    }
+    return somaPonteiro;
+}
+void invertePonteiros(int *vet, int tamanho){
+    int i;
+    int j;
+    int atual;
+    for(i = 0, j = tamanho -1; i < j; i++, j--){
+        atual = *(vet + i);
+        *(vet + i) = *(vet + j);
+        *(vet + j) = atual;
+    }
+}
+void ponteiroDuplo(int **pont){
+    **pont = 100;
+}
+int vogaisPonteiro(char *str){
+    int i;
+    int contagemVogais = 0;
+    for(i = 0; *(str + i) != '\0'; i++){
+        if(*(str + i) == 'a' || *(str + i) == 'A' 
+        || *(str + i) == 'e' || *(str + i) == 'E' 
+        || *(str + i) == 'i' || *(str + i) == 'I' 
+        || *(str + i) == 'o' || *(str + i) == 'O' 
+        || *(str + i) == 'u' || *(str + i) == 'U'){
+            contagemVogais++;
+        }
+    }
+    return contagemVogais;
+}
+void origemDestino(char *origem, char *destino){
+    int i = 0;
+    while(origem[i] != '\0'){
+        destino[i] = origem[i];
+        i++;
+    }
+    destino[i] = '\0';
+}
 
-    SetConsoleOutputCP(CP_UTF8);
+int main(){
+    // SetConsoleOutputCP(CP_UTF8);
+    
+    {
+    // Exercício 10 – Copiar string usando ponteiros
+    // Escreva uma função que receba duas strings (origem e destino) e copie o 
+    // conteúdo da origem para o destino usando ponteiros.
+    // char origem[] = "gustavo";
+    // char destino[50];
+    // origemDestino(origem, destino);
+    // printf("%s", destino);
+
+    }
+    {
+    // Exercício 9 – Contagem de vogais em uma string usando ponteiro
+    // Escreva uma função que conte o número de vogais em uma string usando ponteiros.
+    // char str[] = "gustavo";
+    // int resultado = vogaisPonteiro(str);
+    // printf("%d", resultado);
+    }
+    {
+    // Crie uma função que receba um ponteiro duplo e altere o valor apontado para 100.
+    // int valor = 10;
+    // int *pont = &valor;
+    // int **pon = &pont;
+
+    // ponteiroDuplo(pon);
+
+    // printf("%d", valor);
+    }
+    {
+    // Exercício 7 – Inversão de vetor usando ponteiros
+    // Crie uma função que receba um vetor e seu tamanho, e inverta os elementos usando ponteiros.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // int i;
+
+    // for(i = 0; i < tamanho; i++){
+    //     printf("%d \n", *(vet + i));
+    // }
+
+    // invertePonteiros(vet, tamanho);
+    
+    // for(i = 0; i < tamanho; i++){
+    //     printf("%d", *(vet + i));
+    // }
+    }
+    {
+    // Exercício 6 – Soma de elementos de um vetor usando ponteiros
+    // Crie uma função que receba um vetor de inteiros e seu tamanho, e retorne a soma 
+    // dos elementos usando ponteiros.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // int resultado = somaVetoresPonteiro(vet, tamanho);
+    // printf("%d", resultado);
+
+    }
+    {
+    // Exercício 5 – Verificação de número par usando ponteiro
+    // Escreva uma função que receba um ponteiro para inteiro e retorne 1 se o valor for par, 
+    // ou 0 se for ímpar.
+    // int pont = 25;
+    // int resultado = verificaPonteiro(&pont);
+    // printf("%d", resultado);
+    }
+    {
+    // Exercício 4 – Multiplicação de dois números usando ponteiros
+    // Crie uma função que receba dois ponteiros para inteiros e retorne o produto dos valores apontados.
+    // int a = 10;
+    // int b = 2;
+    // int resultado = multiplicaPonteiros(&a, &b);
+    // printf("%d", resultado);
+    
+    }
+    {
+        // Escreva uma função troca que troque o valor de duas variáveis usando ponteiros.
+        // int a = 20;
+        // int b = 10;
+        // trocaValoresPonteiros(&a, &b);
+        // printf("%d %d", a, b);
+
+    }
+    {
+        // Crie duas variáveis a e b, e um ponteiro pra cada uma. Depois crie uma função que 
+        // receba dois ponteiros e retorne a soma dos valores apontados.
+
+        // int a = 10;
+        // int b = 20;
+        // int *ponA = &a;
+        // int *ponB = &b;
+        // int resultado = somaValoresPonteiros(ponA, ponB);
+        // printf("%d", resultado);
+    }
+    {
+    // Crie uma variável inteira com valor 10, crie um ponteiro que aponte pra essa variável, e:
+    // Imprima o valor da variável pelo ponteiro.
+    // Altere o valor da variável pelo ponteiro para 20 e imprima novamente.
+    // int var = 10;
+    // int *pon = &var;
+    // *pon = 20;
+
+    // printf("%d", var);
+
+    }
+    {
     // Desafio 12 – Preenchendo um vetor
     // Crie uma função preencher que preencha um vetor com valores consecutivos (1, 2, 3...).
-    int i;
-    int vet[5];
-    int tamanho = 5;
+    // int i;
+    // int vet[5];
+    // int tamanho = 5;
 
-    preencheVetorConsecutivo(vet, tamanho);
+    // preencheVetorConsecutivo(vet, tamanho);
 
-    for(i = 0; i < tamanho; i++){
-        printf("%d \n", vet[i]);
+    // for(i = 0; i < tamanho; i++){
+    //     printf("%d \n", vet[i]);
+    // }
     }
-
     {
         // 🔍 Desafio 11 – Encontrar o maior número
         // Escreva uma função que receba dois ponteiros e retorne o endereço do maior valor.
@@ -239,7 +404,6 @@ int main(){
     // printf("%p\n", &p+2);
     }
     
-
 
     return 0;
 }
