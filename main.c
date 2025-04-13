@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// #include <windows.h>
+#include <windows.h>
+#include <ctype.h>
 
 void dobrarValor(int *num) {
     *num = *num * 2;
@@ -170,10 +171,174 @@ void origemDestino(char *origem, char *destino){
     }
     destino[i] = '\0';
 }
+void elementosMaiores(int *vet, int tamanho, int referencia){
+    int i;
+    int valoresMaior = 0;
+    for(i = 0; i < tamanho; i++){
+        if(vet[i] > referencia){
+            valoresMaior++;
+        }
+    }
+    printf("%d elementos do vetor são maior que o valor da referência %d \n", valoresMaior, referencia);
+}
+int maiorElementoVetor(int *vet, int tamanho){
+    int i;
+    int maiorValor = vet[0];
+    for(i = 0; i < tamanho; i++){
+        if(vet[i] > maiorValor){
+            maiorValor = vet[i];
+        }
+    }
+    return maiorValor;
+}
+int caractereEmString(char *str, char caracter){
+    int i;
+    int contagemCaracter = 0;
+    for(i = 0; str[i] != '\0'; i++){
+        if(str[i] == caracter){
+            contagemCaracter++;
+        }
+    }
+    return contagemCaracter;
+}
+void maiusculaParaMinuscula(char *str){
+    int i;
+    for(i = 0; str[i] != '\0'; i++){
+        if(isupper(str[i])){
+            str[i] = tolower(str[i]);
+        }
+        
+    }
+}
+void zerarNegativos(int *vet, int tamanho){
+    int i;
+    for(i = 0; i < tamanho; i++){
+        if(vet[i] < 0){
+            vet[i] = 0;
+        }
+    }
+}
+int multiplicarElementosVetores(int *vet, int tamanho){
+    int i;
+    int multiplicado = 1;
+    for(i = 0; i < tamanho; i++){
+        multiplicado *= vet[i];
+    }
+    return multiplicado;
+}
+void preencherVetor(int *vet, int tamanho){
+    int i;
+    int atual = 1;
+    for(i = 0; i < tamanho; i++){
+        vet[i] = atual;
+        atual++;
+    }
+}
+void concatenarStrings(char *str1, char *str2){
+    strcat(str1, str2);
+}
+int contarPalavras(char *str){
+    int contagemEspaco = 0;
+    while(*str == ' ') str++;
+
+    if(*str == '\0') return 0;
+
+    while(*str != '\0'){
+        if(*str == ' ' && *(str + 1) != ' ' && *(str + 1) != '\0'){
+            contagemEspaco++;
+        }
+        str++;
+    }
+    return contagemEspaco + 1;
+}
 
 int main(){
-    // SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+    {
+    // Exercício 15 – Trocar letras maiúsculas por minúsculas
+    // Crie uma função que receba uma string e altere todas as letras maiúsculas 
+    // para minúsculas, usando ponteiros.
+    // char str[] = "GUSTAVO";
+    // maiusculaParaMinuscula(str);
+    // printf("%s", str);
+    }
+    {
+    // Exercício 16 – Zerar elementos negativos de um vetor
+    // Crie uma função que receba um vetor de inteiros e seu tamanho e zere todos os valores
+    // negativos usando ponteiros.
+    // int vet[] = {-5,-4,2,-8,5,6};
+    // int tamanho = 6;
+    // int i;
+    // zerarNegativos(vet, tamanho);
+    // for(i = 0; i < tamanho; i++){
+    //     printf("%d", vet[i]);
+    // }
     
+    }
+    {
+    // Exercício 17 – Multiplicação de todos os elementos de um vetor
+    // Crie uma função que receba um vetor de inteiros e seu tamanho e retorne a multiplicação 
+    // de todos os elementos usando ponteiros.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // int resultado = multiplicarElementosVetores(vet, tamanho);
+    // printf("%d", resultado);
+    }
+    {
+    // Exercício 18 – Preencher vetor com valores de 1 a n usando ponteiros
+    // Crie uma função que receba um vetor e seu tamanho e preencha com valores de 1 até o tamanho 
+    // usando ponteiros.
+    // int i;
+    // int vet[10] = {1,2,3,4,5,6,7,8,9,10};
+    // int tamanho = 10;
+    // preencherVetor(vet, tamanho);
+    // for(i = 0; i < tamanho; i++){
+    //     printf("%d", vet[i]);
+    // }
+    }
+    {
+    // Exercício 19 – Concatenar duas strings usando ponteiros
+    // Crie uma função que receba duas strings e concatene a segunda ao final da primeira usando ponteiros.
+    // char str1[50] = "gustavo";
+    // char str2[] = " santos";
+    // concatenarStrings(str1, str2);
+    // printf("%s", str1);
+    }
+    {
+    // Exercício 20 – Contar palavras em uma string usando ponteiros
+    // Crie uma função que conte quantas palavras existem em uma string 
+    // (palavras separadas por espaço) usando ponteiros.
+    // char str[50] = "gustavo   é   brabo";
+    // int resultado = contarPalavras(str); 
+    // printf("%d", resultado);
+    }
+    {
+        // Exercício 14 – Contagem de caracteres específicos em string
+    // Crie uma função que receba uma string e um caractere, e conte quantas vezes esse 
+    // caractere aparece na string usando ponteiros.
+    // char str[7] = "ana";
+    // char carac = 'a';
+    // int resultado = caractereEmString(str, carac);
+    // printf("%d", resultado);
+
+    }
+    {
+    // Exercício 13 – Maior valor de um vetor usando ponteiro
+    // Crie uma função que receba um vetor e seu tamanho e retorne o maior valor do vetor usando ponteiros.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // int resultado = maiorElementoVetor(vet, tamanho);
+    // printf("%d", resultado);
+    }
+    {
+        // Exercício 11 – Contar elementos maiores que um valor
+    // Crie uma função que receba um vetor de inteiros, seu tamanho e um valor de referência. 
+    // A função deve contar quantos elementos são maiores que o valor de referência, usando ponteiros.
+    // int vet[5] = {1,2,3,4,5};
+    // int tamanho = 5;
+    // int referencia = 2;
+    // elementosMaiores(vet, tamanho, referencia);
+    }
     {
     // Exercício 10 – Copiar string usando ponteiros
     // Escreva uma função que receba duas strings (origem e destino) e copie o 
